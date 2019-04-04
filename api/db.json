@@ -1,0 +1,51 @@
+{
+  "streams": [
+    {
+      "title": "1",
+      "description": "123",
+      "id": 1,
+      "userId": "101106==521394344585463"
+    },
+    {
+      "title": "2",
+      "description": "22",
+      "id": 2,
+      "userId": "101106==521394344585463"
+    },
+    {
+      "description": "33",
+      "title": "3",
+      "id": 3,
+      "userId": "101106==521394344585463"
+    },
+    {
+      "title": "this is created by me",
+      "description": "this is created by me",
+      "userId": {
+        "isSignedIn": true,
+        "userId": "101106521394344585463"
+      },
+      "id": 4
+    },
+    {
+      "title": "d",
+      "description": "fdsfs",
+      "userId": {
+        "isSignedIn": true,
+        "userId": "101106521394344585463"
+      },
+      "id": 5
+    },
+    {
+      "title": "hope",
+      "description": "hope",
+      "userId": "101106521394344585463",
+      "id": 6
+    },
+    {
+      "title": "ed",
+      "description": "ed",
+      "id": 8
+    }
+  ]
+}

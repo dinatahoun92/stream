@@ -1,37 +1,23 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchStream } from "../actions";
-import flv from "flv.js";
 
 class StreamShow extends Component {
   constructor(props) {
     super(props);
-    this.videoRef = React.createRef();
   }
   componentDidMount() {
     const { id } = this.props.match.params;
     this.props.fetchStream(id);
-    if (this.player || !this.props.stream) {
-      return;
-    }
-    this.player = flv.createPlayer({
-      type: "flv",
-      url: `http://localhost:8000/live/${id}.flv`
-    });
-    this.player.attachMediaElement(this.videoRef.current);
-    this.player.load();
   }
-  componentDidUpdate() {
-    const { id } = this.props.match.params;
-    if (this.player || !this.props.stream) {
-      return;
-    }
-    this.player = flv.createPlayer({
-      type: "flv",
-      url: `http://localhost:8000/live/${id}.flv`
-    });
-    this.player.attachMediaElement(this.videoRef.current);
-    this.player.load();
+
+  youtubeLink() {
+    var link = this.props.stream.youtube.replace(
+      "https://www.youtube.com/watch?v=",
+      ""
+    );
+    link = link.replace("https://youtu.be/", "");
+    return "https://www.youtube.com/embed/" + link;
   }
   render() {
     if (!this.props.stream) {
@@ -39,7 +25,14 @@ class StreamShow extends Component {
     }
     return (
       <>
-        <video ref={this.videoRef} style={{ width: "100%" }} controls />
+        <iframe
+          width="700"
+          height="400"
+          src={this.youtubeLink()}
+          frameBorder="0"
+          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        />
         <h2>{this.props.stream.title}</h2>
         <h5>{this.props.stream.description}</h5>
       </>

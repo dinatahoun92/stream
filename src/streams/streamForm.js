@@ -34,7 +34,12 @@ class StreamForm extends Component {
         <Field
           name="description"
           component={this.renderInput}
-          label="enter descriotion"
+          label="enter description"
+        />
+        <Field
+          name="youtube"
+          component={this.renderInput}
+          label="enter youtube link"
         />
         <button type="submit" className="ui button primary">
           submit
@@ -50,6 +55,9 @@ const validate = formValues => {
   }
   if (!formValues.description) {
     errors.description = "you must enter a description";
+  }
+  if (!formValues.youtube) {
+    errors.youtube = "you must enter a youtube link";
   }
   return errors;
 };

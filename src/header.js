@@ -4,18 +4,12 @@ import GoogleAuth from "./GoogleAuth";
 class header extends Component {
   render() {
     return (
-      <div className="ui hugh inverted menu">
+      <div className="ui hugh  inverted menu" style={{ borderRadius: 0 }}>
         <div className="ui container">
-          <Link className="item" to="/">
-            Stream
+          <Link className="item" to="/" style={{ fontSize: "20px" }}>
+            Youtube Notes
           </Link>
           <div className="right menu">
-            <Link className="item" to="/">
-              Messages
-            </Link>
-            <Link className="item" to="/">
-              Friends
-            </Link>
             <div className="item">
               <GoogleAuth />
             </div>

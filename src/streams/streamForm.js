@@ -24,6 +24,16 @@ class StreamForm extends Component {
       </div>
     );
   };
+  renderTextArea = ({ input, label, meta }) => {
+    const className = `field ${meta.error && meta.touched ? "error" : ""}`;
+    return (
+      <div className={className}>
+        <label>{label}</label>
+        <textarea {...input} autoComplete="off" />
+        {this.renderError(meta)}
+      </div>
+    );
+  };
   render() {
     return (
       <form
@@ -32,15 +42,16 @@ class StreamForm extends Component {
       >
         <Field name="title" component={this.renderInput} label="enter title" />
         <Field
-          name="description"
-          component={this.renderInput}
-          label="enter description"
-        />
-        <Field
           name="youtube"
           component={this.renderInput}
           label="enter youtube link"
         />
+        <Field
+          name="description"
+          component={this.renderTextArea}
+          label="enter description"
+        />
+
         <button type="submit" className="ui button primary">
           submit
         </button>

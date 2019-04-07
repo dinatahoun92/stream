@@ -10,15 +10,29 @@ class StreamList extends React.Component {
   renderAdmin(stream) {
     if (stream.userId === this.props.currentUserId) {
       return (
-        <div className="right floated content">
-          <Link to={`/streams/edit/${stream.id}`} className="ui button primary">
-            Edit
+        <div className="btns">
+          <Link to={`/streams/${stream.id}`} className="ui button icon teal">
+            <i class="eye icon" />
+          </Link>
+          <Link
+            to={`/streams/edit/${stream.id}`}
+            className="ui button icon primary"
+          >
+            <i class="pencil alternate icon" />
           </Link>
           <Link
             to={`/streams/delete/${stream.id}`}
-            className="ui button negative"
+            className="ui button icon negative"
           >
-            delete
+            <i class="trash alternat icon" />
+          </Link>
+        </div>
+      );
+    } else {
+      return (
+        <div className="btns">
+          <Link to={`/streams/${stream.id}`} className="ui button icon teal">
+            <i class="eye icon" />
           </Link>
         </div>
       );
@@ -38,24 +52,46 @@ class StreamList extends React.Component {
   renderList() {
     return this.props.streams.map(stream => {
       return (
-        <div className="item" key={stream.id}>
-          {this.renderAdmin(stream)}
+        <tr key={stream.id}>
+          <td>
+            <Link
+              to={`/streams/${stream.id}`}
+              style={{
+                color: "#333",
+                cursor: "pointer",
+                letterSpacing: "1px",
+                padding: "10px 0",
+                display: "block",
+                textTransform: "capitalize"
+              }}
+            >
+              {stream.title}
+            </Link>
+          </td>
 
-          <i className="large middle aligned icon camera" />
-          <div className="content">
-            <Link to={`/streams/${stream.id}`}>{stream.title}</Link>
-            <div className="description">{stream.description}</div>
-          </div>
-        </div>
+          <td>{stream.userName}</td>
+
+          <td>{this.renderAdmin(stream)}</td>
+        </tr>
       );
     });
   }
   render() {
     return (
       <div>
-        <h2>streams</h2>
-        <div className="ui celled list">{this.renderList()}</div>
+        <h3 style={{ marginBottom: "-30px" }}>
+          Hello {this.props.isSignedIn ? this.props.userName : ""}
+        </h3>
         {this.renderCreate()}
+
+        <table class="ui striped table">
+          <thead>
+            <th>Title</th>
+            <th>Created By</th>
+            <th />
+          </thead>
+          <tbody>{this.renderList()}</tbody>
+        </table>
       </div>
     );
   }
@@ -64,7 +100,8 @@ const mapStateToProps = state => {
   return {
     streams: Object.values(state.streams),
     currentUserId: state.auth.userId,
-    isSignedIn: state.auth.isSignedIn
+    isSignedIn: state.auth.isSignedIn,
+    userName: state.auth.userName
   };
 };
 export default connect(

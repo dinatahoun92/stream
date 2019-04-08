@@ -1,0 +1,11 @@
+.btns {
+  float: right;
+}
+@media only screen and (max-width: 767px) {
+  thead {
+    display: none !important;
+  }
+  .btns {
+    float: none;
+  }
+}

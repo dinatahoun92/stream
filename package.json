@@ -16,7 +16,7 @@
     "redux-form": "^8.1.0",
     "redux-thunk": "^2.3.0"
   },
-  "homepage": "https://dinatahoun92.github.io/stream/index.html",
+  "homepage": "https://dinatahoun92.github.io/stream/index.htmlgit a",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

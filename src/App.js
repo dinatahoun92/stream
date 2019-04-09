@@ -12,7 +12,7 @@ import history from "./history";
 class App extends Component {
   render() {
     return (
-      <BrowserRouter>
+      <Router history={history}>
 
         <div>
           <Header />
@@ -31,7 +31,7 @@ class App extends Component {
           <Footer />
         </div>
 
-      </BrowserRouter>
+      </Router>
     );
   }
 }

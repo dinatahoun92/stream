@@ -17,16 +17,17 @@ class App extends Component {
         <div>
           <Header />
           <div className="ui container" style={{ paddingBottom: "70px" }}>
+            <switch>
+              <Route exact path="/" component={StreamList} />
+              <Route exact path="/streams/new" component={StreamCreate} />
+              <Route exact path="/streams/edit/:id" component={StreamEdit} />
+              <Route
 
-            <Route exact path="/" component={StreamList} />
-            <Route exact path="/streams/new" component={StreamCreate} />
-            <Route exact path="/streams/edit/:id" component={StreamEdit} />
-            <Route
-
-              path="/streams/delete/:id"
-              component={StreamDelete}
-            />
-            <Route exact path="/streams/:id" component={StreamShow} />
+                path="/streams/delete/:id"
+                component={StreamDelete}
+              />
+              <Route exact path="/streams/:id" component={StreamShow} />
+            </switch>
           </div>
           <Footer />
         </div>

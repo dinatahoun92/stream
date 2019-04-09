@@ -12,19 +12,19 @@ class StreamList extends React.Component {
       return (
         <div className="btns">
           <Link to={`/streams/${stream.id}`} className="ui button icon teal">
-            <i class="eye icon" />
+            <i className="eye icon" />
           </Link>
           <Link
             to={`/streams/edit/${stream.id}`}
             className="ui button icon primary"
           >
-            <i class="pencil alternate icon" />
+            <i className="pencil alternate icon" />
           </Link>
           <Link
             to={`/streams/delete/${stream.id}`}
             className="ui button icon negative"
           >
-            <i class="trash alternat icon" />
+            <i className="trash alternat icon" />
           </Link>
         </div>
       );
@@ -32,7 +32,7 @@ class StreamList extends React.Component {
       return (
         <div className="btns">
           <Link to={`/streams/${stream.id}`} className="ui button icon teal">
-            <i class="eye icon" />
+            <i className="eye icon" />
           </Link>
         </div>
       );
@@ -84,11 +84,13 @@ class StreamList extends React.Component {
         </h3>
         {this.renderCreate()}
 
-        <table class="ui striped table">
+        <table className="ui striped table">
           <thead>
-            <th>Title</th>
-            <th>Created By</th>
-            <th />
+            <tr>
+              <th>Title</th>
+              <th>Created By</th>
+              <th />
+            </tr>
           </thead>
           <tbody>{this.renderList()}</tbody>
         </table>

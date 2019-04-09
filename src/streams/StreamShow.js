@@ -21,7 +21,7 @@ class StreamShow extends Component {
   }
   render() {
     if (!this.props.stream) {
-      return <div>loading</div>;
+      return <div></div>;
     }
     return (
       <>

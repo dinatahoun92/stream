@@ -21,31 +21,45 @@ export const signOut = () => {
 export const createStream = formValues => async (dispatch, getState) => {
   const userId = getState().auth.userId;
   const userName = getState().auth.userName;
-  const response = await streams.post("/streams", {
-    ...formValues,
-    userId,
-    userName
-  });
+  const response = await streams.post(
+    "https://my-api-1992.herokuapp.com/streams",
+    {
+      ...formValues,
+      userId,
+      userName
+    }
+  );
   dispatch({ type: "CREATE_STREAM", payload: response.data });
   history.push(`/`);
 };
 export const fetchStreams = () => async (dispatch, getState) => {
   const userId = getState().auth.userId;
   const userName = getState().auth.userName;
-  const response = await streams.get("/streams", userId, userName);
+  const response = await streams.get(
+    "https://my-api-1992.herokuapp.com/streams",
+    userId,
+    userName
+  );
   dispatch({ type: "FETCH_STREAMS", payload: response.data });
 };
 export const fetchStream = id => async dispatch => {
-  const response = await streams.get(`/streams/${id}`);
+  const response = await streams.get(
+    `https://my-api-1992.herokuapp.com/streams/${id}`
+  );
   dispatch({ type: "FETCH_STREAM", payload: response.data });
 };
 export const editStream = (id, formValues) => async dispatch => {
-  const response = await streams.patch(`/streams/${id}`, formValues);
+  const response = await streams.patch(
+    `https://my-api-1992.herokuapp.com/streams/${id}`,
+    formValues
+  );
   dispatch({ type: "EDIT_STREAM", payload: response.data });
-  history.push(`/streams/${id}`);
+  history.push(`https://my-api-1992.herokuapp.com/streams/${id}`);
 };
 export const deleteStream = id => async dispatch => {
-  const response = await streams.delete(`/streams/${id}`);
+  const response = await streams.delete(
+    `https://my-api-1992.herokuapp.com/streams/${id}`
+  );
   dispatch({ type: "DELETE_STREAM", payload: id });
   history.push("/");
 };

@@ -79,9 +79,13 @@ class StreamList extends React.Component {
   render() {
     return (
       <div>
-        <h3 style={{ marginBottom: "-30px" }}>
-          Hello {this.props.isSignedIn ? this.props.userName : ""}
-        </h3>
+        {this.props.isSignedIn ? (
+          <h3 style={{ marginBottom: "-30px" }}>
+            Hello {this.props.isSignedIn ? this.props.userName : ""}
+          </h3>
+        ) : (
+          <h3>Hello {this.props.isSignedIn ? this.props.userName : ""}</h3>
+        )}
         {this.renderCreate()}
 
         <table className="ui striped table">
